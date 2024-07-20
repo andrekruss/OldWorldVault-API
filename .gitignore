@@ -1,3 +1,4 @@
 # Folders
 obj/
 bin/
+.fake
