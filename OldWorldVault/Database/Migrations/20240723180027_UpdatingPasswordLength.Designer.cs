@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OldWorldVault.Database;
 
@@ -11,9 +12,11 @@ using OldWorldVault.Database;
 namespace Database.Migrations
 {
     [DbContext(typeof(OldWorldVaultDbContext))]
-    partial class OldWorldVaultDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240723180027_UpdatingPasswordLength")]
+    partial class UpdatingPasswordLength
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,8 +1,8 @@
-POST http://localhost:5142/users
+POST http://localhost:5142/api/users
 Content-Type: application/json
 
 {
-    "Username": "test",
-    "Email": "test@mail.com",
-    "Password": "pass123" 
+    "Username": "test3",
+    "Email": "test3@mail.com",
+    "Password": "somepass#123" 
 }

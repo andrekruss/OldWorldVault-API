@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OldWorldVault.Contracts.User;
 using OldWorldVault.Database.Repositories.UserRepo;
@@ -6,7 +7,7 @@ using OldWorldVault.Dtos.UserDtos;
 namespace OldWorldVault.Api.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class UsersController : ControllerBase 
 {
     private readonly IUserRepository _userRepository;
@@ -16,12 +17,16 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
+    [AllowAnonymous]
     public async Task<IActionResult> CreateUser(CreateUserRequest request) 
     {
+
+        var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
+
         var user = new CreateUserDto(
             request.Username,
             request.Email,
-            request.Password,
+            hashedPassword,
             true,
             DateTime.UtcNow,
             DateTime.UtcNow
